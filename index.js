@@ -31,7 +31,7 @@ const syntaxFg     = mono['1'];
 const syntaxBg     = 'hsl(220, 13%, 18%)';
 const syntaxGutter = 'hsl(220, 14%, 45%)';
 const syntaxGuide  = 'rgba(171, 178, 191, 0.15)';
-const syntaxAccent = 'rgba(82, 139, 255, 0.24)';
+// const syntaxAccent = 'rgba(82, 139, 255, 0.24)';
 
 
 module.exports.decorateConfig = (config) => {
@@ -48,7 +48,7 @@ module.exports.decorateConfig = (config) => {
     backgroundColor: syntaxBg,
     foregroundColor: syntaxFg,
     borderColor:     syntaxGutter,
-    cursorColor:     syntaxAccent,
+    cursorColor:     mono['2'],
 
     colors: {
       black:        mono['2'],
