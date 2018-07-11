@@ -44,7 +44,7 @@ exports.decorateConfig = (config) => {
     fontSize:        16,
     fontWeight:      500,
     fontWeightBold:  700,
-    backgroundColor: syntaxBg,
+    backgroundColor: 'rgba(0, 0, 0, .65)', // syntaxBg,
     foregroundColor: syntaxFg,
     borderColor:     syntaxGutter,
     cursorColor:     syntaxAccent,
