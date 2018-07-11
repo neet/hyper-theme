@@ -29,10 +29,10 @@ const hue = {
 const syntaxFg = mono['1'];
 const syntaxBg = `hsl(${syntaxHue}, ${syntaxSubsituabtion}, ${syntaxBrightness})`;
 
-const configKey     = 'theme';
-const customedTheme = config.hasOwnProperty(configKey) && config[configKey];
+const configKey       = 'theme';
+const customizedTheme = config.hasOwnProperty(configKey) && config[configKey];
 
-const theme = {
+const theme = Object.assign({}, {
   fontFamily:      "'Fira Code', '游ゴシック体'",
   fontSize:        16,
   fontWeight:      500,
@@ -124,7 +124,6 @@ const theme = {
       box-shadow: 0 1px 10px rgba(0, 0, 0, 1.0);
     }
   `,
-  ...customedTheme
-}
+}, customizedTheme);
 
-exports.decorateConfig = (config) => ({...config, ...theme});
+exports.decorateConfig = (originalConfig) => (Object.assign({}, originalConfig, theme));
