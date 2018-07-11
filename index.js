@@ -32,9 +32,9 @@ const syntaxGutter = `hsl(${syntaxHue}, 14%, 89%)`;
 const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
 const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%)`;
 
-module.exports.onWindow = (browserWindow) => {
+module.exports.onWindow = (browserWindow) => (
   browserWindow.setVibrancy("ultra-dark")
-};
+);
 
 module.exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
