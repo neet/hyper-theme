@@ -1,6 +1,6 @@
 const colors        = require('./colors');
 const configKey     = 'theme';
-const customedTheme = config.hasOwnProperty(configKey) && config.theme[setting];
+const customedTheme = config.hasOwnProperty(configKey) && config[configKey];
 
 const theme = {
   fontFamily:      "'Fira Code', '游ゴシック体'",
