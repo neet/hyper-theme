@@ -33,7 +33,7 @@ const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
 const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%)`;
 
 
-module.exports.decorateConfig = (config) => {
+exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
   const configKey  = 'theme';
   const userConfig = config.hasOwnProperty(configKey) && config[configKey];
