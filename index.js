@@ -26,8 +26,11 @@ const hue = {
 };
 
 // Base color
-const syntaxFg = mono['1'];
-const syntaxBg = `hsl(${syntaxHue}, ${syntaxSubsituabtion}, ${syntaxBrightness})`;
+const syntaxFg     = mono['1'];
+const syntaxBg     = `hsl(${syntaxHue}, ${syntaxSubsituabtion}, ${syntaxBrightness})`;
+const syntaxGutter = `hsl(${syntaxHue}, 14%, 89%)`;
+const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
+const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%);`;
 
 exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
@@ -41,8 +44,8 @@ exports.decorateConfig = (config) => {
     fontWeightBold:  700,
     backgroundColor: syntaxBg,
     foregroundColor: syntaxFg,
-    borderColor:     mono['2'],
-    cursorColor:     hue['2'],
+    borderColor:     syntaxGutter,
+    cursorColor:     syntaxAccent,
 
     colors: {
       black:        mono['2'],
@@ -79,6 +82,9 @@ exports.decorateConfig = (config) => {
       }
       .tab_textActive {
         background: rgba(255, 255, 255, .05);
+      }
+      .footer_footer:hover {
+        opacity: 0.8;
       }
       .hyper-search-wrapper {
           border: 0 !important;
