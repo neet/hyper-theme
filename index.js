@@ -1,4 +1,34 @@
-const colors        = require('./colors');
+const syntaxHue           = '220';
+const syntaxSubsituabtion = '13%';
+const syntaxBrightness    = '18%';
+
+// Monochrome
+const mono = {
+  '1': `hsl(${syntaxHue}, 14%, 71%)`,
+  '2': `hsl(${syntaxHue}, 9%, 55%)`,
+  '3': `hsl(${syntaxHue}, 10%, 40%)`,
+};
+
+// Colors
+const hue = {
+  '1': 'hsl(187, 47%, 55%)', // cyan
+  '2': 'hsl(207, 82%, 66%)', // blue
+  '3': 'hsl(286, 60%, 67%)', // purple
+  '4': 'hsl( 95, 38%, 62%)', // green
+  '5': {
+    '1': 'hsl(355, 65%, 65%)', // red 1
+    '2': 'hsl( 5, 48%, 51%)',  // red 2
+  },
+  '6': {
+    '1': 'hsl( 29, 54%, 61%)', // orange 1
+    '2': 'hsl( 39, 67%, 69%)', // orange 2
+  },
+};
+
+// Base color
+const syntaxFg = mono['1'];
+const syntaxBg = `hsl(${syntaxHue}, ${syntaxSubsituabtion}, ${syntaxBrightness})`;
+
 const configKey     = 'theme';
 const customedTheme = config.hasOwnProperty(configKey) && config[configKey];
 
@@ -7,28 +37,28 @@ const theme = {
   fontSize:        16,
   fontWeight:      500,
   fontWeightBold:  700,
-  backgroundColor: colors.syntaxBg,
-  foregroundColor: colors.syntaxFg,
-  borderColor:     colors.mono['2'],
-  cursorColor:     colors.hue['2'],
+  backgroundColor: syntaxBg,
+  foregroundColor: syntaxFg,
+  borderColor:     mono['2'],
+  cursorColor:     hue['2'],
 
   colors: {
-    black:        colors.syntaxBg,
-    red:          colors.hue['5']['1'],
-    green:        colors.hue['4'],
-    yellow:       colors.hue['6']['1'],
-    blue:         colors.hue['2'],
-    magenta:      colors.hue['3'],
-    cyan:         colors.hue['1'],
-    white:        colors.mono['1'],
-    lightBlack:   colors.mono['3'],
-    lightRed:     colors.hue['5']['2'],
-    lightGreen:   colors.hue['4'],
-    lightYellow:  colors.hue['6']['2'],
-    lightBlue:    colors.hue['2'],
-    lightMagenta: colors.hue['3'],
-    lightCyan:    colors.hue['1'],
-    lightWhite:   colors.mono['2'],
+    black:        syntaxBg,
+    red:          hue['5']['1'],
+    green:        hue['4'],
+    yellow:       hue['6']['1'],
+    blue:         hue['2'],
+    magenta:      hue['3'],
+    cyan:         hue['1'],
+    white:        mono['1'],
+    lightBlack:   mono['3'],
+    lightRed:     hue['5']['2'],
+    lightGreen:   hue['4'],
+    lightYellow:  hue['6']['2'],
+    lightBlue:    hue['2'],
+    lightMagenta: hue['3'],
+    lightCyan:    hue['1'],
+    lightWhite:   mono['2'],
   },
 
   css: `
