@@ -33,7 +33,7 @@ const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
 const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%)`;
 
 
-exports.decorateConfig = (config) => {
+module.exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
   const configKey  = 'theme';
   const userConfig = config.hasOwnProperty(configKey) && config[configKey];
@@ -115,7 +115,7 @@ exports.decorateConfig = (config) => {
         color: #d7dae0;
       }
       .tab_tab.tab_active {
-        background-color: ${backgroundColor};
+        background-color: ${syntaxBg};
       }
       .tab_tab.tab_active,
       .tab_tab.tab_active + .tab_tab {
@@ -133,7 +133,7 @@ exports.decorateConfig = (config) => {
         background-image: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
         box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
         border: 1px solid #181a1f;
-        border-bottom-color: ${backgroundColor};
+        border-bottom-color: ${syntaxBg};
         border-top: 0;
       }
       .tab_tab.tab_active:last-of-type::before {
