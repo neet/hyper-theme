@@ -30,7 +30,7 @@ const syntaxFg     = mono['1'];
 const syntaxBg     = `hsl(${syntaxHue}, ${syntaxSubsituabtion}, ${syntaxBrightness})`;
 const syntaxGutter = `hsl(${syntaxHue}, 14%, 89%)`;
 const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
-const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%);`;
+const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%)`;
 
 exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
