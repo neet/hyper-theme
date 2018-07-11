@@ -32,7 +32,11 @@ const syntaxGutter = `hsl(${syntaxHue}, 14%, 89%)`;
 const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
 const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%)`;
 
-exports.decorateConfig = (config) => {
+module.exports.onWindow = (browserWindow) => {
+  browserWindow.setVibrancy("ultra-dark")
+};
+
+module.exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
   const configKey  = 'theme';
   const userConfig = config.hasOwnProperty(configKey) && config[configKey];
@@ -82,9 +86,6 @@ exports.decorateConfig = (config) => {
       }
       .tab_textActive {
         background: rgba(255, 255, 255, .05);
-      }
-      .footer_footer:hover {
-        opacity: 0.8 !important;
       }
       .hyper-search-wrapper {
           border: 0 !important;
