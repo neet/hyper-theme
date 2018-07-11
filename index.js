@@ -45,7 +45,7 @@ exports.decorateConfig = (config) => {
     cursorColor:     hue['2'],
 
     colors: {
-      black:        mono['3'],
+      black:        mono['2'],
       red:          hue['5']['1'],
       green:        hue['4'],
       yellow:       hue['6']['1'],
@@ -53,7 +53,7 @@ exports.decorateConfig = (config) => {
       magenta:      hue['3'],
       cyan:         hue['1'],
       white:        mono['1'],
-      lightBlack:   mono['3'],
+      lightBlack:   mono['2'],
       lightRed:     hue['5']['2'],
       lightGreen:   hue['4'],
       lightYellow:  hue['6']['2'],
