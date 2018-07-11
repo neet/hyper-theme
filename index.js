@@ -29,8 +29,8 @@ const hue = {
 const syntaxFg = mono['1'];
 const syntaxBg = `hsl(${syntaxHue}, ${syntaxSubsituabtion}, ${syntaxBrightness})`;
 
+// The key which will be used in `~/.hyper.js`
 const configKey       = 'theme';
-const customizedTheme = config.hasOwnProperty(configKey) && config[configKey];
 
 const theme = Object.assign({}, {
   fontFamily:      "'Fira Code', '游ゴシック体'",
@@ -126,4 +126,12 @@ const theme = Object.assign({}, {
   `,
 }, customizedTheme);
 
-exports.decorateConfig = (originalConfig) => (Object.assign({}, originalConfig, theme));
+exports.decorateConfig = (originalConfig) => {
+  const customizedTheme = originalConfig.hasOwnProperty(configKey) && originalConfig[configKey] || {};
+
+  return Object.assign({},
+    originalConfig,
+    theme,
+    customizedTheme
+  );
+};
