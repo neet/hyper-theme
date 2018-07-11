@@ -32,9 +32,8 @@ const syntaxGutter = `hsl(${syntaxHue}, 14%, 89%)`;
 const syntaxGuide  = `hsl(${syntaxHue}, 16%, 71%)`;
 const syntaxAccent = `hsl(${syntaxHue}, 100%, 66%)`;
 
-module.exports.onWindow = (browserWindow) => browserWindow.setVibrancy("ultra-dark");
 
-exports.decorateConfig = (config) => {
+module.exports.decorateConfig = (config) => {
   // The key which will be used in `~/.hyper.js`
   const configKey  = 'theme';
   const userConfig = config.hasOwnProperty(configKey) && config[configKey];
@@ -44,7 +43,7 @@ exports.decorateConfig = (config) => {
     fontSize:        16,
     fontWeight:      500,
     fontWeightBold:  700,
-    backgroundColor: 'rgba(0, 0, 0, .65)', // syntaxBg,
+    backgroundColor: syntaxBg,
     foregroundColor: syntaxFg,
     borderColor:     syntaxGutter,
     cursorColor:     syntaxAccent,
@@ -69,66 +68,123 @@ exports.decorateConfig = (config) => {
     },
 
     css: `
-      ${config.css}
-      .hyper_main {
-        border: none !important;
-      }
+      ${config.css || ''}
       .header_header {
-        background-color: rgba(0, 0, 0, .15) !important;
+        top: 0;
+        right: 0;
+        left: 0;
       }
-      .tabs_borderShim {
-        border-color: transparent !important;
+      .tabs_list {
+        background-color: #21252b !important;
+        border-bottom-color: #181a1f !important;
+      }
+      .splitpane_divider {
+        background-color: rgba(171, 178, 191, 0.15) !important;
       }
       .tab_tab {
-        border: 0;
+        font-weight: 500;
+        color: rgba(157, 165, 180, 0.6);
+        border-width: 0 0 0 1px;
+        border-image: linear-gradient(#21252b, #181a1f 1em) 0 0 0 1 stretch;
+        border-style: solid;
       }
-      .tab_textActive {
-        background: rgba(255, 255, 255, .05);
+      .tab_tab:first-of-type {
+        border-width: 0;
       }
-      .hyper-search-wrapper {
-          border: 0 !important;
-          padding: 0 !important;
-          background-color: transparent !important;
-          display: flex;
-          opacity: 0.8 !important;
-        }
-      .hyper-search-wrapper button {
-        top: 0 !important;
-        opacity: 0.8 !important;
-        padding: 0 6px;
-        cursor: pointer;
+      .tab_tab:hover {
+        color: rgba(157, 165, 180, 0.6);
+        transition: none;
       }
-      .hyper-search-wrapper button:hover {
-        opacity: 1.0 !important;
-      }
-      .hyper-search-wrapper button:nth-of-type(1) {
-        border-radius: 4px 0 0 4px !important;
-        border-right: 1px solid #ddd !important;
-      }
-      .hyper-search-wrapper button:nth-of-type(2) {
-        border-radius: 0 4px 4px 0 !important;
-      }
-      .hyper-search-wrapper:before {
-        width: 20px;
-        color: #000;
+      .tab_tab::after {
+        content: "";
         position: absolute;
-        content: '🔍';
-        font-size: 10px;
-        margin: 7px;
-        z-index: 999;
+        pointer-events: none;
+        top: 0;
+        bottom: -1px;
+        left: 0;
+        width: 2px;
+        height: inherit;
+        background: #528bff;
+        opacity: 0;
+        transition: opacity .16s;
+        z-index: 1;
       }
-      #hyper-search-input {
-        background-color: #fff !important;
-        border-radius: 4px;
-        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-        padding: 3px 6px 3px 24px !important;
-        color: #000 !important;
-        opacity: 0.9 !important;
-        margin-right: 2px;
+      .tabs_title,
+      .tab_tab.tab_active {
+        font-weight: 500;
+        color: #d7dae0;
       }
-      #hyper-search-input:focus {
-        opacity: 1.0 !important;
-        box-shadow: 0 1px 10px rgba(0, 0, 0, 1.0);
+      .tab_tab.tab_active {
+        background-color: ${backgroundColor};
+      }
+      .tab_tab.tab_active,
+      .tab_tab.tab_active + .tab_tab {
+        border-image: linear-gradient(transparent, transparent) 0 0 0 1 stretch;
+      }
+      .tab_tab.tab_active::before {
+        content: "";
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: -1px;
+        bottom: -1px;
+        right: 0;
+        height: inherit;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+        border: 1px solid #181a1f;
+        border-bottom-color: ${backgroundColor};
+        border-top: 0;
+      }
+      .tab_tab.tab_active:last-of-type::before {
+        border-right-width: 0;
+      }
+      .tab_tab.tab_active::after {
+        opacity: 1;
+        transition-duration: .32s;
+      }
+      .tab_icon {
+        display: block;
+        background: rgba(157, 165, 180, 0.6);
+        -webkit-mask-image: url('${__dirname}/close.svg');
+        mask-image: url('${__dirname}/close.svg');
+        -webkit-mask-size: 7px;
+        mask-size: 7px;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position-y: center;
+        mask-position-y: center;
+        -webkit-mask-position-x: 8px;
+        mask-position-x: 8px;
+        width: 26px;
+        height: 100%;
+        top: 0;
+        right: 0;
+        transform: scale(0);
+        transition: transform .08s;
+        opacity: 1;
+        border-radius: 0;
+        z-index: 2;
+      }
+      .tab_icon:hover {
+        background: rgba(157, 165, 180, 0.6);
+        opacity: .7;
+      }
+      .tab_tab.tab_active .tab_icon {
+        background: #d7dae0;
+      }
+      .tab_tab.tab_active .tab_icon:hover {
+        background: #d7dae0;
+      }
+      .tab_tab:hover .tab_icon {
+        transform: scale(1);
+        transition-duration: .16s;
+      }
+      .tab_icon svg {
+        display: none;
+      }
+      .tab_icon::after {
+        display: none;
       }
     `,
   }, userConfig);
