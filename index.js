@@ -84,7 +84,7 @@ exports.decorateConfig = (config) => {
         background: rgba(255, 255, 255, .05);
       }
       .footer_footer:hover {
-        opacity: 0.8;
+        opacity: 0.8 !important;
       }
       .hyper-search-wrapper {
           border: 0 !important;
