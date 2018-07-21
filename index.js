@@ -40,7 +40,7 @@ module.exports.decorateConfig = (config) => {
   const userConfig = config.hasOwnProperty(configKey) && config[configKey];
 
   return Object.assign({}, {
-    fontFamily:      "'Fira Code', '游ゴシック体'",
+    fontFamily:      "'Fira Code', 'Hack Nerd Font', '游ゴシック体'",
     fontSize:        16,
     fontWeight:      500,
     fontWeightBold:  700,
