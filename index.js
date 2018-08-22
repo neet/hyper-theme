@@ -5,7 +5,7 @@ const selectionColor  = '#6a5e32';
 const borderColor     = backgroundColor;
 
 const colors = {
-	black        : backgroundColor,
+  black        : '#3a4056',
 	red          : '#F07178',
 	green  	     : '#C3E88D',
 	yellow       : '#FFCB6B',
